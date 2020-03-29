@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
+const { checkAuth, checkRoleAdmin } = require("../auth/auth");
 const userController = require("../controllers/user");
 
 // Route GET /api/users
 // Desc  Get all users
 // Auth  Private only Admin
-router.get("/", userController.findAll);
+router.get("/", checkRoleAdmin, userController.findAll);
 
 // Route GET /api/users/informations/:id
 // Desc  Get user with informations
@@ -16,7 +17,7 @@ router.get("/informations/:id", userController.findByIdForPublic);
 // Route GET /api/users/:id
 // Desc  Get user by ID
 // Auth  Private
-router.get("/:id", userController.findById);
+router.get("/:id", checkAuth, userController.findById);
 
 // Route PUT /api/users/:id
 // Desc  Update User by ID
@@ -24,6 +25,7 @@ router.get("/:id", userController.findById);
 router.put(
   "/:id",
   [
+    checkAuth,
     check("firstName", "Veuillez renseigner votre prénom !")
       .not()
       .isEmpty(),
@@ -62,5 +64,10 @@ router.put(
   ],
   userController.update
 );
+
+// Route DELETE /api/users/:id
+// Desc  Delete User | Ads | Comments | Bookings
+// Auth  Private
+router.delete("/:id", checkAuth, userController.destroy);
 
 module.exports = router;

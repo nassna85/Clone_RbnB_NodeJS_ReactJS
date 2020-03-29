@@ -69,7 +69,12 @@ const findByIdForPublic = async (req, res) => {
 };
 
 const findById = async (req, res) => {
-  const id = req.params.id;
+  const id = +req.params.id;
+  const currentUser = req.user;
+
+  if (id !== currentUser.user.id) {
+    return res.status(403).json({ msg: "Acces Denied" });
+  }
   try {
     const user = await User.findByPk(id, {
       attributes: [
@@ -94,7 +99,12 @@ const findById = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const id = req.params.id;
+  const id = +req.params.id;
+  const currentUser = req.user;
+
+  if (id !== currentUser.id) {
+    return res.status(403).json({ msg: "Acces Denied" });
+  }
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -129,9 +139,46 @@ const update = async (req, res) => {
   }
 };
 
+const destroy = async (req, res) => {
+  const id = +req.params.id;
+  const currentUser = req.user;
+  try {
+    if (id !== currentUser.id) {
+      return res.status(403).json({ msg: "Acces Denied" });
+    }
+
+    const user = await User.findByPk(currentUser.id);
+
+    if (!user) {
+      return res.status(400).json({ msg: "User Not Found" });
+    }
+
+    //TODO => foreignKey delete problem !!
+    await Ad.destroy({
+      where: { userId: [currentUser.id] }
+    });
+
+    await Comment.destroy({
+      where: { userId: [currentUser.id] }
+    });
+
+    await Booking.destroy({
+      where: { userId: [currentUser.id] }
+    });
+
+    await User.destroy(user);
+
+    return res.status(200).json({ msg: "User deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ msg: "Server Error" });
+  }
+};
+
 module.exports = {
   findAll,
   findByIdForPublic,
   findById,
-  update
+  update,
+  destroy
 };

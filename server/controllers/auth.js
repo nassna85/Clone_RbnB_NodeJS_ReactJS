@@ -85,11 +85,9 @@ const login = async (req, res) => {
     }
     //Validation passed
     const payload = {
-      user: {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName
-      }
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName
     };
     generateToken(payload, (error, token) => {
       if (error) throw error;
