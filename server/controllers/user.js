@@ -153,20 +153,9 @@ const destroy = async (req, res) => {
       return res.status(400).json({ msg: "User Not Found" });
     }
 
-    //TODO => foreignKey delete problem !!
-    await Ad.destroy({
-      where: { userId: [currentUser.id] }
+    await User.destroy({
+      where: { id: currentUser.id }
     });
-
-    await Comment.destroy({
-      where: { userId: [currentUser.id] }
-    });
-
-    await Booking.destroy({
-      where: { userId: [currentUser.id] }
-    });
-
-    await User.destroy(user);
 
     return res.status(200).json({ msg: "User deleted successfully" });
   } catch (error) {
