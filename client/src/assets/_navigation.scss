@@ -1,0 +1,26 @@
+nav.mainNav {
+  background-color: $whiteColor;
+  border-bottom: 1px solid $darkColor;
+  .navbar-brand {
+    color: $primaryColor;
+    font-size: 1.4rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    .single-brand {
+      color: $dangerColor;
+    }
+  }
+  .nav-link {
+    color: $dangerColor;
+    margin: 0 0.3rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
