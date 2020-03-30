@@ -5,3 +5,18 @@
 body {
   font-family: "Raleway", sans-serif;
 }
+
+// HOMEPAGE
+section#header-homepage {
+  margin-top: 76px;
+  background-color: $bgHeaderHomepage;
+  h1 {
+    color: $whiteColor;
+    font-size: 3rem;
+  }
+  p {
+    color: $whiteColor;
+    opacity: 0.9;
+    font-size: 1.5rem;
+  }
+}

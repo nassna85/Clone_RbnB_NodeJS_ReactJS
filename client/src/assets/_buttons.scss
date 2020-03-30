@@ -3,6 +3,12 @@
   border-color: transparent !important;
   box-shadow: none !important;
 }
+@mixin circle-button {
+  border-radius: 50px;
+}
+@mixin opacity-hover-button {
+  opacity: 0.9;
+}
 
 .btn {
   padding: 0.5rem 1rem;
@@ -13,7 +19,7 @@
   &.btn-primary {
     background-color: $primaryColor;
     &:hover {
-      opacity: 0.8;
+      @include opacity-hover-button;
     }
     &:focus {
       @include outline-button;
@@ -22,7 +28,7 @@
   &.btn-success {
     background-color: $successColor;
     &:hover {
-      opacity: 0.8;
+      @include opacity-hover-button;
     }
     &:focus {
       @include outline-button;
@@ -31,16 +37,19 @@
   &.btn-danger {
     background-color: $dangerColor;
     &:hover {
-      opacity: 0.9;
+      @include opacity-hover-button;
     }
     &:focus {
       @include outline-button;
+    }
+    &.btn-circle {
+      @include circle-button;
     }
   }
   &.btn-secondary {
     background-color: $purpleColor;
     &:hover {
-      opacity: 0.8;
+      @include opacity-hover-button;
     }
     &:focus {
       @include outline-button;

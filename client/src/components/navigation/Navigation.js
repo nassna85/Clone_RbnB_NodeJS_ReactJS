@@ -2,7 +2,7 @@ import React from "react";
 
 const Navigation = props => {
   return (
-    <nav className="navbar navbar-expand-lg mainNav">
+    <nav className="navbar navbar-expand-lg mainNav fixed-top">
       <a className="navbar-brand" href="#">
         CloneRbnb Node<span className="single-brand">&</span>React
       </a>
@@ -15,7 +15,7 @@ const Navigation = props => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <i className="fas fa-bars"></i>
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -39,7 +39,7 @@ const Navigation = props => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="btn btn-danger" href="#">
+            <a className="btn btn-danger btn-circle" href="#">
               Inscription
             </a>
           </li>
