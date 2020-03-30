@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 const { validationResult } = require("express-validator");
-const { Ad, User, Comment } = require("../models");
+const { Ad, User, Comment, Booking } = require("../models");
 const { slugify } = require("../helpers/slugify");
 
 const findAll = async (req, res) => {
@@ -167,9 +167,47 @@ const update = async (req, res) => {
   }
 };
 
+const destroy = async (req, res) => {
+  const id = +req.params.id;
+  const currentUser = req.user;
+
+  try {
+    const ad = await Ad.findByPk(id);
+
+    if (!ad) {
+      return res.status(404).json({ msg: "Ad Not Found" });
+    }
+    if (ad.userId !== currentUser.id) {
+      return res.status(403).json({ msg: "Acces Denied" });
+    }
+
+    const bookings = await Booking.findAll({
+      where: {
+        adId: ad.id
+      }
+    });
+
+    if (bookings.length > 0) {
+      return res.status(401).json({
+        msg:
+          "Vous ne pouvez pas supprimer une annonce qui contient des réservations"
+      });
+    }
+
+    await Ad.destroy({
+      where: { id: ad.id }
+    });
+    return res.status(200).json({ msg: "Ad Deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ msg: "Server Error" });
+  }
+};
+
 module.exports = {
   findAll,
   findById,
   create,
-  update
+  update,
+  destroy
 };

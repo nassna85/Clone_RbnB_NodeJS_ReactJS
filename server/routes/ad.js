@@ -144,4 +144,9 @@ router.put(
   adController.update
 );
 
+// Route DELETE /api/ads/:id
+// Desc  Delete Ad By ID
+// Auth  Private
+router.delete("/:id", checkAuth, adController.destroy);
+
 module.exports = router;

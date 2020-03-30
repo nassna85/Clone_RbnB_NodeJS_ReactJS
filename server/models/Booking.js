@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true
       }
     },
+    { timestamps: false },
     {}
   );
   Booking.associate = function(models) {
