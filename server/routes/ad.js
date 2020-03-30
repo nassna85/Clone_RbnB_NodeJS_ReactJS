@@ -14,6 +14,11 @@ router.get("/", adController.findAll);
 // Auth  Public
 router.get("/:id", adController.findById);
 
+// Route GET /api/ads/users/:id
+// Desc  Get Ads by User
+// Auth  Private
+router.get("/users/:id", checkAuth, adController.findByUser);
+
 // Route POST /api/ads
 // Desc  Create a Ad
 // Auth  Private

@@ -80,6 +80,41 @@ const findById = async (req, res) => {
   }
 };
 
+const findByUser = async (req, res) => {
+  const id = +req.params.id;
+  const currentUser = req.user;
+
+  if (id !== currentUser.id) {
+    return res.status(403).json({ msg: "Access Denied" });
+  }
+
+  try {
+    const ads = await Ad.findAll({
+      attributes: [
+        "id",
+        "title",
+        "coverImage",
+        "price",
+        "location",
+        [sequelize.fn("AVG", sequelize.col("comments.rating")), "avgRatings"]
+      ],
+      include: [
+        {
+          model: Comment,
+          as: "comments",
+          attributes: []
+        }
+      ],
+      group: ["Ad.id"],
+      where: { userId: id }
+    });
+    return res.status(200).json(ads);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ msg: "Server Error" });
+  }
+};
+
 const create = async (req, res) => {
   const currentUser = req.user;
   const errors = validationResult(req);
@@ -209,5 +244,6 @@ module.exports = {
   findById,
   create,
   update,
-  destroy
+  destroy,
+  findByUser
 };

@@ -87,7 +87,8 @@ const login = async (req, res) => {
     const payload = {
       id: user.id,
       firstName: user.firstName,
-      lastName: user.lastName
+      lastName: user.lastName,
+      isAdmin: user.isAdmin
     };
     generateToken(payload, (error, token) => {
       if (error) throw error;
