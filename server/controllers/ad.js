@@ -8,6 +8,7 @@ const findAll = async (req, res) => {
     const ads = await Ad.findAll({
       attributes: [
         "id",
+        "slug",
         "title",
         "introduction",
         "description",

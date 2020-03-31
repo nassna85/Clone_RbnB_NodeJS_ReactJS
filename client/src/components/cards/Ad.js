@@ -1,22 +1,31 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
-const Ad = (props) => {
+const Ad = ({ ad }) => {
     return (
         <div className="col-lg-4">
-            <div className="card-ad">
-                <Link to="#">
+            <div className="card-ad mb-5">
+                <Link to={"/annonces/" + ad.slug + "/" + ad.id}>
                     <img
-                        src="https://cdn.pixabay.com/photo/2020/02/07/14/49/glacier-4827387_960_720.jpg"
-                        alt="Titre"
+                        src={ ad.coverImage }
+                        alt={ ad.title }
                         className="img-fluid"
                     />
                 </Link>
-                <div className="rating-ad">Note de l'annonce</div>
-                <h3>Titre de l'annonce</h3>
+                <div className="rating-ad">
+                    <StarRatings
+                        starDimension="20px"
+                        starSpacing="3px"
+                        starRatedColor="red"
+                        numberOfStars={5}
+                        rating={+ad.avgRatings}
+                    />
+                </div>
+                <h3>{ ad.title }</h3>
                 <div className="d-flex justify-content-between my-3">
-                    <span className="badge badge-primary">Bulgarie</span>
-                    <span className="price">97.99 €</span>
+                    <span className="badge badge-primary">{ ad.location }</span>
+                    <span className="price">{ ad.price } €</span>
                 </div>
             </div>
         </div>
