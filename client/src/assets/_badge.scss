@@ -1,0 +1,16 @@
+.badge {
+  padding: 8px 12px;
+  border-radius: 50px;
+  &.badge-primary {
+    background-color: $primaryColor;
+  }
+  &.badge-success {
+    background-color: $successColor;
+  }
+  &.badge-danger {
+    background-color: $dangerColor;
+  }
+  &.badge-secondary {
+    background-color: $purpleColor;
+  }
+}

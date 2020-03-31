@@ -1,0 +1,32 @@
+@mixin heading-h1 {
+  font-size: 3rem;
+}
+
+@mixin heading-h2 {
+  color: $primaryColor;
+  font-weight: bold;
+  position: relative;
+  margin: 70px 0;
+  &::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 100px;
+    height: 4px;
+    background-color: $dangerColor;
+  }
+  &::after{
+    content: '';
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    width: 150px;
+    height: 3px;
+    background-color: $dangerColor;
+  }
+}
+
+@mixin heading-h3 {
+  color: $primaryColor;
+  font-size: 1.2rem;
+}

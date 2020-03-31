@@ -1,9 +1,17 @@
 @import "config";
 @import "navigation";
 @import "buttons";
+@import "heading";
+@import "badge";
 
 body {
   font-family: "Raleway", sans-serif;
+}
+h2{
+  @include heading-h2;
+}
+h3{
+  @include heading-h3;
 }
 
 // HOMEPAGE
@@ -12,11 +20,20 @@ section#header-homepage {
   background-color: $bgHeaderHomepage;
   h1 {
     color: $whiteColor;
-    font-size: 3rem;
+    @include heading-h1;
   }
   p {
     color: $whiteColor;
     opacity: 0.9;
     font-size: 1.5rem;
+  }
+}
+section#last-ads{
+  .rating-ad {
+    margin: 10px 0;
+  }
+  .price {
+    color: $dangerColor;
+    font-weight: bold;
   }
 }

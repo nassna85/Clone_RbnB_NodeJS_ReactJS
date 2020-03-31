@@ -9,6 +9,9 @@
 @mixin opacity-hover-button {
   opacity: 0.9;
 }
+@mixin sm-button {
+  padding: 0.3rem 0.8rem;
+}
 
 .btn {
   padding: 0.5rem 1rem;
@@ -24,6 +27,9 @@
     &:focus {
       @include outline-button;
     }
+    &.btn-sm {
+      @include sm-button;
+    }
   }
   &.btn-success {
     background-color: $successColor;
@@ -32,6 +38,9 @@
     }
     &:focus {
       @include outline-button;
+    }
+    &.btn-sm {
+      @include sm-button;
     }
   }
   &.btn-danger {
@@ -45,6 +54,9 @@
     &.btn-circle {
       @include circle-button;
     }
+    &.btn-sm {
+      @include sm-button;
+    }
   }
   &.btn-secondary {
     background-color: $purpleColor;
@@ -53,6 +65,9 @@
     }
     &:focus {
       @include outline-button;
+    }
+    &.btn-sm {
+      @include sm-button;
     }
   }
 }
