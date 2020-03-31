@@ -27,6 +27,9 @@
     &:focus {
       @include outline-button;
     }
+    &.btn-circle {
+      @include circle-button;
+    }
     &.btn-sm {
       @include sm-button;
     }
@@ -38,6 +41,9 @@
     }
     &:focus {
       @include outline-button;
+    }
+    &.btn-circle {
+      @include circle-button;
     }
     &.btn-sm {
       @include sm-button;
@@ -65,6 +71,9 @@
     }
     &:focus {
       @include outline-button;
+    }
+    &.btn-circle {
+      @include circle-button;
     }
     &.btn-sm {
       @include sm-button;

@@ -3,6 +3,7 @@
 @import "buttons";
 @import "heading";
 @import "badge";
+@import "footer";
 
 body {
   font-family: "Raleway", sans-serif;
@@ -12,6 +13,16 @@ h2{
 }
 h3{
   @include heading-h3;
+}
+.jumbotron {
+  border-radius: 0;
+}
+.price {
+  color: $dangerColor;
+  font-weight: bold;
+}
+.rating-ad {
+  margin: 10px 0;
 }
 
 // HOMEPAGE
@@ -28,12 +39,9 @@ section#header-homepage {
     font-size: 1.5rem;
   }
 }
-section#last-ads{
-  .rating-ad {
-    margin: 10px 0;
-  }
-  .price {
-    color: $dangerColor;
-    font-weight: bold;
+section#cta-registration {
+  margin: 100px 0;
+  p{
+    font-size: 1.5rem;
   }
 }
