@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/homepage/Header";
+//import Ad from "../components/cards/Ad";
+import AdsAPI from "../services/adsAPI";
 import Ad from "../components/cards/Ad";
 
 const HomePage = props => {
+    const [lastAds, setLastAds] = useState([]);
+    const [bestAds, setBestAds] = useState([]);
+
+    const fetchLastAds = async () => {
+        try{
+            const data = await AdsAPI.findLast();
+            setLastAds(data);
+        }catch(error){
+            console.log(error.response);
+        }
+    };
+
+    const fetchBestAds = async () => {
+        try{
+            const data = await AdsAPI.findBest();
+            setBestAds(data);
+        }catch(error){
+            console.log(error.response);
+        }
+    };
+
+    useEffect(() => {
+        fetchLastAds();
+    }, []);
+
+    useEffect(() => {
+        fetchBestAds();
+    }, []);
+
   return (
     <>
         <Header />
@@ -11,9 +42,9 @@ const HomePage = props => {
             <div className="container">
                 <h2>Les annonces récentes</h2>
                 <div className="row">
-                    <Ad />
-                    <Ad />
-                    <Ad />
+                    {
+                        lastAds.map(lastAd => <Ad ad={ lastAd } key={ lastAd.id } />)
+                    }
                 </div>
             </div>
         </section>
@@ -31,9 +62,9 @@ const HomePage = props => {
             <div className="container">
                 <h2>Les meilleures annonces</h2>
                 <div className="row">
-                    <Ad/>
-                    <Ad/>
-                    <Ad/>
+                    {
+                        bestAds.map(bestAd => <Ad ad={ bestAd } key={ bestAd.id } />)
+                    }
                 </div>
             </div>
         </section>

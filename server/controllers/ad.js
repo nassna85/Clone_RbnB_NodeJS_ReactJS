@@ -31,7 +31,7 @@ const findAll = async (req, res) => {
           attributes: []
         }
       ],
-      group: ["ad.id"]
+      group: ["Ad.id"]
     });
     if (!ads) {
       return res.status(400).json({ msg: "Ads Not Found" });
@@ -52,13 +52,13 @@ const findLastAds = async (req, res) => {
         limit: 3,
         attributes: [
             "id",
-          "title",
-          "coverImage",
-          "price",
-          "location",
-          "slug",
+            "title",
+            "coverImage",
+            "price",
+            "location",
+            "slug",
             "createdAt",
-          [sequelize.fn("AVG", sequelize.col("comments.rating")), "avgRatings"]
+            [sequelize.fn("AVG", sequelize.col("comments.rating")), "avgRatings"]
         ],
         include: [
           {
@@ -69,7 +69,7 @@ const findLastAds = async (req, res) => {
             duplicating: false
           }
         ],
-        group: ["ad.id"],
+        group: ["Ad.id"],
       });
       if(!ads){
         return res.status(404).json({ msg: "Ads Not Found" });

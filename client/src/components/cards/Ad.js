@@ -4,13 +4,13 @@ import StarRatings from "react-star-ratings";
 
 const Ad = ({ ad }) => {
     return (
-        <div className="col-lg-4">
+        <div className="col-sm-12 col-lg-4 col-md-6">
             <div className="card-ad mb-5">
                 <Link to={"/annonces/" + ad.slug + "/" + ad.id}>
                     <img
                         src={ ad.coverImage }
                         alt={ ad.title }
-                        className="img-fluid"
+                        className="img-fluid ad-coverImage"
                     />
                 </Link>
                 <div className="rating-ad">

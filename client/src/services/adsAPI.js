@@ -6,6 +6,18 @@ function findAll(){
         .then(response => response.data);
 }
 
+function findLast(){
+    return axios.get(ADS_URL + "/last/ads")
+        .then(response => response.data);
+}
+
+function findBest(){
+    return axios.get(ADS_URL + "/best/ads")
+        .then(response => response.data);
+}
+
 export default {
-    findAll
+    findAll,
+    findLast,
+    findBest
 }
