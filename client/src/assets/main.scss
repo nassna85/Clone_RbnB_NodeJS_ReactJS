@@ -5,6 +5,7 @@
 @import "badge";
 @import "footer";
 
+// GENERAL
 body {
   font-family: "Raleway", sans-serif;
 }
@@ -27,6 +28,29 @@ h3{
 img.ad-coverImage {
   max-width: 350px;
   max-height: 233px;
+}
+.divider-section {
+  width: 200px;
+  height: 5px;
+  background-color: $dangerColor;
+  margin: 100px auto;
+}
+.avatar {
+  border-radius: 50%;
+  &.avatar-mini {
+    max-width: 24px;
+    min-height: 24px;
+  }
+  &.avatar-medium {
+    max-width: 124px;
+    max-height: 124px;
+  }
+}
+div.card-comment {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 // HOMEPAGE
@@ -53,4 +77,45 @@ section#cta-registration {
 // Page Ads
 section#ads {
   margin-top: 150px;
+}
+
+// Page Show Ad
+section#show-ad-information {
+  margin-top: 150px;
+  h1{
+    color: $primaryColor;
+  }
+  p{
+    color: $darkColor;
+    font-style: italic;
+  }
+  .price{
+    font-size: 1.5rem;
+  }
+}
+section#show-ad-description {
+  p{
+    color: $darkColor;
+    &.firstname-owner{
+      color: $primaryColor;
+      font-weight: bold;
+    }
+    &.introduction-owner{
+      font-size: .9rem;
+    }
+  }
+}
+section#show-ad-comments {
+  p{
+    color: $darkColor;
+    &.lastname-comment {
+      color: $primaryColor;
+      font-weight: bold;
+    }
+  }
+  .date-comment {
+    font-style: italic;
+    font-size: .9rem;
+    color: $primaryColor;
+  }
 }

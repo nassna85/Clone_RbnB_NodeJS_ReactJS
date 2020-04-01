@@ -135,7 +135,7 @@ const findById = async (req, res) => {
         {
           model: User,
           as: "user",
-          attributes: ["id", "firstName", "lastName", "avatar"]
+          attributes: ["id", "firstName", "lastName", "introduction", "avatar"]
         },
         {
           model: Comment,
