@@ -14,6 +14,11 @@ router.get("/", adController.findAll);
 // Auth  Public
 router.get("/:id", adController.findById);
 
+// Route GET /api/ads/last
+// Desc  Get Last Ad (limit 3)
+// Auth  Public
+router.get("/last/ads", adController.findLastAds);
+
 // Route GET /api/ads/users/:id
 // Desc  Get Ads by User
 // Auth  Private
