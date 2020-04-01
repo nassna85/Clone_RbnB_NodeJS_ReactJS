@@ -59,6 +59,7 @@ const ShowAd = ({ match }) => {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchAd(id);
     }, [id]);
 
