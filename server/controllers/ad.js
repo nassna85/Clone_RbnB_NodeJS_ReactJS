@@ -81,6 +81,42 @@ const findLastAds = async (req, res) => {
     }
 };
 
+const findBestAds = async (req, res) => {
+    try{
+      const ads = await Ad.findAll({
+        order: sequelize.literal('avgRatings DESC'),
+        limit: 3,
+        attributes: [
+          "id",
+          "title",
+          "coverImage",
+          "price",
+          "location",
+          "slug",
+          "createdAt",
+          [sequelize.fn("AVG", sequelize.col("comments.rating")), "avgRatings"],
+        ],
+        include: [
+          {
+            //Add Duplicating because limit. If i don't use duplicating, => error
+            model: Comment,
+            as: "comments",
+            attributes: [],
+            duplicating: false
+          }
+        ],
+        group: ["ad.id", "comments.id"],
+      });
+      if(!ads){
+        return res.status(404).json({ msg: "Ads Not Found" });
+      }
+      return res.status(200).json(ads);
+    }catch(error){
+      console.log(error);
+      return res.status(500).json({ msg: "Server Error" });
+    }
+};
+
 const findById = async (req, res) => {
   const id = +req.params.id;
   try {
@@ -285,5 +321,6 @@ module.exports = {
   update,
   destroy,
   findByUser,
-  findLastAds
+  findLastAds,
+  findBestAds
 };
