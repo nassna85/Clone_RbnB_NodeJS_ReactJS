@@ -7,6 +7,7 @@ import OwnerCard from "../components/cards/OwnerCard";
 import CommentCard from "../components/cards/CommentCard";
 import Loader from "../components/loaders/Loader";
 import {formatDate} from "../helpers/formatDate";
+import TextArea from "../components/forms/TextArea";
 
 const ShowAd = ({ match }) => {
     const { id } = match.params;
@@ -23,6 +24,10 @@ const ShowAd = ({ match }) => {
         user: {}
     });
     const [commentsAd, setCommentsAd] = useState([]);
+    const [sendComment, setSendComment] = useState({
+        rating: 0,
+        message: ""
+    });
     const [redirection, setRedirection] = useState(false);
     const [adLoading, setAdLoading] = useState(true);
     const [commentLoading, setCommentLoading] = useState(true);
@@ -56,6 +61,19 @@ const ShowAd = ({ match }) => {
             }
             console.log(error.response);
         }
+    };
+
+    const handleChangeRating = ( newRating ) => {
+        setSendComment({ ...sendComment, rating: newRating })
+    };
+
+    const handleChangeComment = event => {
+        setSendComment({ ...sendComment, message: event.target.value });
+    };
+
+    const handleCommentSubmit = event => {
+        event.preventDefault();
+        console.log("Comment send");
     };
 
     useEffect(() => {
@@ -160,6 +178,31 @@ const ShowAd = ({ match }) => {
             <section id="show-ad-send-comment">
                 <div className="container">
                     <h2>Envoyer un commentaire</h2>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <form onSubmit={ handleCommentSubmit }>
+                                <StarRatings
+                                    starDimension="25px"
+                                    starSpacing="3px"
+                                    starRatedColor="red"
+                                    changeRating={ handleChangeRating }
+                                    numberOfStars={ 5 }
+                                    name='rating'
+                                    rating={ sendComment.rating }
+                                />
+                                <TextArea
+                                    marginTop="30px"
+                                    name="message"
+                                    placeholder="Votre commentaire..."
+                                    value={ sendComment.message }
+                                    onChange={ handleChangeComment }
+                                />
+                                <button className="btn btn-primary">
+                                    Envoyer
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </section>
         </>
