@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const uniqid = require("uniqid");
 const { getHash } = require("../helpers/hashPassword");
 const { generateToken } = require("../helpers/generateToken");
 const { validationResult } = require("express-validator");
@@ -43,6 +44,28 @@ const registration = async (req, res) => {
         errors: [{ msg: "Cette adresse email existe déjà !", param: "email" }]
       });
     }
+
+    //Gérer le problème ici req.files undefined
+    if(req.files === null){
+      return res.status(400).json({
+        errors: [
+          {
+            msg: "Veuillez insérer un avatar !",
+            param: "avatar"
+          }
+        ]
+      });
+    }
+    console.log(req.files);
+
+    const file = req.files.avatar;
+    const filename = uniqid(undefined, "-" + file.name);
+    file.mv(`~/client/src/uploads/avatar/${filename}`, err => {
+        if(err){
+          console.log(err);
+          return res.status(500).json({ msg: "Server Error" });
+        }
+    });
     await User.create({
       firstName,
       lastName,
@@ -50,7 +73,7 @@ const registration = async (req, res) => {
       password: getHash(password),
       introduction,
       description,
-      avatar,
+      avatar: filename,
       isAdmin: 0
     });
     return res.status(201).json({ msg: "User created successfully" });
