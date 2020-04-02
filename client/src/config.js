@@ -7,3 +7,5 @@ export const USER_URL = API_URL + "users";
 export const COMMENT_URL = API_URL + "comments";
 
 export const BOOKING_URL = API_URL + "bookings";
+
+export const AUTH_URL = API_URL + "auth";

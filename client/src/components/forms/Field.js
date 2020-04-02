@@ -1,6 +1,6 @@
 import React from "react";
 
-const Field = ({ name, value, onChange, placeholder, type = "text", error = "" }) => (
+const Field = ({ name, value, onChange, placeholder, type = "text", error }) => (
     <div className="form-group">
         <input
             type={ type }

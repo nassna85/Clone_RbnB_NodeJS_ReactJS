@@ -121,3 +121,16 @@ section#show-ad-comments {
     color: $primaryColor;
   }
 }
+
+//Page Registration
+section#form-registration {
+  margin-top: 76px;
+  //height: 100vh;
+  background-color: $primaryColor;
+  padding-top: 200px;
+  padding-bottom: 150px;
+  .bg-light {
+      max-width: 700px;
+      border-radius: 5px;
+  }
+}

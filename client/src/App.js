@@ -6,6 +6,8 @@ import Footer from "./components/footer/Footer";
 import Ads from "./pages/Ads";
 import ShowAd from "./pages/ShowAd";
 import NotFound from "./pages/NotFound";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -13,9 +15,11 @@ const App = () => {
          <Navigation />
          <main>
              <Switch>
-                <Route exact path="/" component={ HomePage } />
+                 <Route exact path="/" component={ HomePage } />
                  <Route path="/annonces/:slug/:id" component={ ShowAd } />
-                <Route path="/annonces" component={ Ads } />
+                 <Route path="/inscription" component={ Registration } />
+                 <Route path="/connexion" component={ Login } />
+                 <Route path="/annonces" component={ Ads } />
                  <Route path="/404" component={ NotFound } />
             </Switch>
          </main>

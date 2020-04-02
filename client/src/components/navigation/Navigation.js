@@ -40,7 +40,7 @@ const Navigation = props => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="btn btn-danger btn-circle" to="#">
+            <Link className="btn btn-danger btn-circle" to="/inscription">
               Inscription
             </Link>
           </li>
