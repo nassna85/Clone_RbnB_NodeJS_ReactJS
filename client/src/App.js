@@ -44,7 +44,7 @@ const App = () => {
              </main>
             <Footer/>
           </Router>
-          <ToastContainer />
+          <ToastContainer position="top-left" />
       </AuthContext.Provider>
   );
 };

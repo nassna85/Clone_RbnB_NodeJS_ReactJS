@@ -124,7 +124,7 @@ section#show-ad-comments {
 }
 
 //Page Registration and Page Login
-section#form-registration, section#form-login {
+section#form-registration {
   margin-top: 76px;
   //height: 100vh;
   background-color: $primaryColor;
@@ -133,6 +133,17 @@ section#form-registration, section#form-login {
   .bg-light {
       max-width: 700px;
       border-radius: 5px;
+  }
+}
+section#form-login {
+  margin-top: 76px;
+  //height: 100vh;
+  background-color: $primaryColor;
+  padding-top: 200px;
+  padding-bottom: 250px;
+  .bg-light {
+    max-width: 700px;
+    border-radius: 5px;
   }
 }
 
