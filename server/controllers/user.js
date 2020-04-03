@@ -72,7 +72,7 @@ const findById = async (req, res) => {
   const id = +req.params.id;
   const currentUser = req.user;
 
-  if (id !== currentUser.user.id) {
+  if (id !== currentUser.id) {
     return res.status(403).json({ msg: "Acces Denied" });
   }
   try {
@@ -84,7 +84,8 @@ const findById = async (req, res) => {
         "email",
         "avatar",
         "introduction",
-        "description"
+        "description",
+        "createdAt"
       ]
     });
 

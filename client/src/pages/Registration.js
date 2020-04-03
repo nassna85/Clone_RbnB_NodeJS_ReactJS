@@ -14,7 +14,6 @@ const Registration = ({ history }) => {
         password: "",
         passwordConfirm: ""
     });
-    const [avatarName, setAvatarName] = useState("Séléctionner une image");
     const [errors, setErrors] = useState({
         firstName: "",
         lastName: "",

@@ -21,9 +21,15 @@ function findBest(){
         .then(response => response.data);
 }
 
+function findAllByUser(id){
+    return axios.get(ADS_URL + "/users/" + id)
+        .then(response => response.data);
+}
+
 export default {
     findAll,
     findLast,
     findBest,
-    findById
+    findById,
+    findAllByUser
 }

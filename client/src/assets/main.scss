@@ -55,6 +55,13 @@ div.card-comment {
   border-radius: 10px;
   margin-bottom: 30px;
 }
+div.card-booking {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: none;
+  border-left: 3px solid $primaryColor;
+  margin-bottom: 30px;
+}
 
 // HOMEPAGE
 section#header-homepage {
@@ -145,5 +152,35 @@ section#form-login {
     max-width: 700px;
     border-radius: 5px;
   }
+}
+
+//page show user profile
+section#header-show-user-profile{
+  margin-top: 76px;
+  background-color: $primaryColor;
+  p{
+    &.firstname{
+      color: $whiteColor;
+      font-weight: bold;
+    }
+    &.date-member{
+      color: $whiteColor;
+      font-style: italic;
+    }
+  }
+}
+section#details-show-user-profile{
+  .introduction{
+    color: $darkColor;
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+  .description{
+    color: $darkColor;
+    font-size: 1.1rem;
+  }
+}
+section#list-bookings-show-user-profile {
+  margin-bottom: 150px;
 }
 

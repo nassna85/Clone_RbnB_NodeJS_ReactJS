@@ -1,6 +1,7 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {Link} from "react-router-dom";
 import { toast } from "react-toastify";
+import jwtDecode from "jwt-decode";
 import AuthAPI from "../../services/authAPI";
 import AuthContext from "../../contexts/AuthContext";
 
@@ -8,12 +9,30 @@ const Navigation = ({ history }) => {
 
   const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
+    const [currentUser, setCurrentUser] = useState({
+        id: "",
+        firstName: "",
+        lastName: ""
+    });
+
   const handleLogout = () => {
     AuthAPI.logout();
     setIsAuthenticated(false);
     toast.success("Vous êtes désormais déconnecté(e) !");
     history.push("/connexion");
   };
+
+    const fetchInfo = () => {
+        const token = window.localStorage.getItem("authToken");
+        if (token) {
+            const { id, firstName, lastName } = jwtDecode(token);
+            setCurrentUser({ id, firstName, lastName });
+        }
+    };
+
+    useEffect(() => {
+        fetchInfo();
+    }, []);
 
   return (
     <nav className="navbar navbar-expand-lg mainNav fixed-top">
@@ -64,13 +83,14 @@ const Navigation = ({ history }) => {
           </> :
               <>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                  aria-haspopup="true" aria-expanded="false">
                 Avatar
-              </a>
+              </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link className="dropdown-item" to="#">Action</Link>
-                <Link className="dropdown-item" to="#">Another action</Link>
+                  <Link className="dropdown-item" to={"/mon-profil/" + currentUser.id}>Mon profil</Link>
+                  <Link className="dropdown-item" to={"/mon-compte/" + currentUser.id}>Mon compte</Link>
+                  <Link className="dropdown-item" to="/annonces/ajouter">Créer une annonce</Link>
                 <div className="dropdown-divider"></div>
                 <button
                     className="dropdown-item"

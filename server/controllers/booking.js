@@ -23,7 +23,7 @@ const findByUser = async (req, res) => {
         {
           model: Ad,
           as: "ad",
-          attributes: ["id", "title", "coverImage", "price", "location"]
+          attributes: ["id", "slug", "title", "coverImage", "price", "location"]
         }
       ],
       where: { userId: id }
