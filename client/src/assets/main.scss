@@ -5,6 +5,7 @@
 @import "text";
 @import "form";
 @import "badge";
+@import "toastify";
 @import "footer";
 
 // GENERAL
@@ -122,8 +123,8 @@ section#show-ad-comments {
   }
 }
 
-//Page Registration
-section#form-registration {
+//Page Registration and Page Login
+section#form-registration, section#form-login {
   margin-top: 76px;
   //height: 100vh;
   background-color: $primaryColor;
@@ -134,3 +135,4 @@ section#form-registration {
       border-radius: 5px;
   }
 }
+

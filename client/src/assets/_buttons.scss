@@ -12,6 +12,12 @@
 @mixin sm-button {
   padding: 0.3rem 0.8rem;
 }
+button.dropdown-item {
+  &:active {
+    @include outline-button;
+    background-color: transparent;
+  }
+}
 
 .btn {
   padding: 0.5rem 1rem;

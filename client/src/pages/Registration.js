@@ -32,18 +32,20 @@ const Registration = ({ history }) => {
         const name = event.currentTarget.name;
         setUser({ ...user, [name]: value });
     };
-
+    /*
     const handleChangeAvatar = event => {
         setUser({ ...user, avatar: event.target.files[0] });
         setAvatarName(event.target.files[0].name);
     };
-
+     */
     const handleSubmit = async event => {
         event.preventDefault();
         setLoading(true);
         try{
+            /*
             const formData = new FormData();
             formData.append('avatar', user.avatar);
+             */
             await authAPI.registration(user);
             setLoading(false);
             setErrors({});
@@ -51,6 +53,7 @@ const Registration = ({ history }) => {
             history.replace("/connexion");
         }catch(error){
             setLoading(false);
+            console.log(error.response);
             const { errors } = error.response.data;
             if(errors){
                 const apiErrors = {};
@@ -59,7 +62,6 @@ const Registration = ({ history }) => {
                 });
                 setErrors(apiErrors);
             }
-            console.log(error.response);
         }
     };
 
@@ -69,7 +71,7 @@ const Registration = ({ history }) => {
                 <form
                     className="bg-light mx-auto p-4"
                     onSubmit={ handleSubmit }
-                    encType="multipart/form-data"
+                    //encType="multipart/form-data"
                 >
                     <h3 className="text-center mb-4">
                         <i className="fas fa-user-plus mr-2"></i>
@@ -99,10 +101,9 @@ const Registration = ({ history }) => {
                     <Field
                         name="avatar"
                         placeholder="Votre avatar"
-                        onChange={ handleChangeAvatar }
-                        //value={ user.avatar }
+                        onChange={ handleChange }
+                        value={ user.avatar }
                         error={ errors.avatar }
-                        type="file"
                     />
                     <Field
                         name="introduction"

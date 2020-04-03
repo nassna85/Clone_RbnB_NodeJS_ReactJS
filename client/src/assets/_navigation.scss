@@ -22,7 +22,7 @@ nav.mainNav {
       outline: none;
     }
   }
-  .nav-link {
+  .nav-link, .dropdown-item {
     color: $dangerColor;
     margin: 0 0.3rem;
     -webkit-transition: all 0.3s ease-in-out;
@@ -31,6 +31,7 @@ nav.mainNav {
     transition: all 0.3s ease-in-out;
     &:hover {
       opacity: 0.8;
+      background-color: transparent;
     }
   }
 }

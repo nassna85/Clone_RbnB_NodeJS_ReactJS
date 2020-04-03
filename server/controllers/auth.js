@@ -1,5 +1,4 @@
 const bcrypt = require("bcrypt");
-const uniqid = require("uniqid");
 const { getHash } = require("../helpers/hashPassword");
 const { generateToken } = require("../helpers/generateToken");
 const { validationResult } = require("express-validator");
@@ -10,7 +9,7 @@ const registration = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
+  console.log(req.file);
   const {
     firstName,
     lastName,
@@ -45,27 +44,6 @@ const registration = async (req, res) => {
       });
     }
 
-    //Gérer le problème ici req.files undefined
-    if(req.files === null){
-      return res.status(400).json({
-        errors: [
-          {
-            msg: "Veuillez insérer un avatar !",
-            param: "avatar"
-          }
-        ]
-      });
-    }
-    console.log(req.files);
-
-    const file = req.files.avatar;
-    const filename = uniqid(undefined, "-" + file.name);
-    file.mv(`~/client/src/uploads/avatar/${filename}`, err => {
-        if(err){
-          console.log(err);
-          return res.status(500).json({ msg: "Server Error" });
-        }
-    });
     await User.create({
       firstName,
       lastName,
@@ -73,7 +51,7 @@ const registration = async (req, res) => {
       password: getHash(password),
       introduction,
       description,
-      avatar: filename,
+      avatar,
       isAdmin: 0
     });
     return res.status(201).json({ msg: "User created successfully" });
@@ -97,14 +75,14 @@ const login = async (req, res) => {
     });
     if (!user) {
       return res.status(400).json({
-        errors: [{ msg: "Email ou mot de passe incorrect !" }]
+        errors: [{ msg: "Email ou mot de passe incorrect !", param: "email" }]
       });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res
         .status(400)
-        .json({ errors: [{ msg: "Email ou mot de passe incorrect !" }] });
+        .json({ errors: [{ msg: "Email ou mot de passe incorrect !", param: "email" }] });
     }
     //Validation passed
     const payload = {

@@ -50,7 +50,7 @@ router.post(
     check(
       "description",
       "Votre description doit contenir au moins 30 caractères !"
-    ).isLength({ min: 30 })
+    ).isLength({ min: 30 }),
   ],
   authController.registration
 );
