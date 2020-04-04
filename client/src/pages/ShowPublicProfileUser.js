@@ -49,6 +49,7 @@ const ShowPublicProfileUser = ({ match }) => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchOwner(id);
   }, [id]);
 
