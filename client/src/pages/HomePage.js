@@ -37,12 +37,16 @@ const HomePage = props => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchLastAds();
+    fetchBestAds();
   }, []);
 
+  /*
   useEffect(() => {
     fetchBestAds();
   }, []);
+  */
 
   return (
     <>
