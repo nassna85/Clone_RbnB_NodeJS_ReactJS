@@ -1,5 +1,6 @@
+const sequelize = require("sequelize");
 const { validationResult } = require("express-validator");
-const { User, Ad, Booking } = require("../models");
+const { User, Ad, Comment } = require("../models");
 
 const findAll = async (req, res) => {
   try {
@@ -54,9 +55,25 @@ const findByIdForPublic = async (req, res) => {
         {
           model: Ad,
           as: "ads",
-          attributes: ["id", "title", "coverImage", "price", "location"]
+          attributes: [
+            "id",
+            "title",
+            "coverImage",
+            "price",
+            "location",
+            [
+              sequelize.fn("AVG", sequelize.col("comments.rating")),
+              "avgRatings"
+            ]
+          ]
+        },
+        {
+          model: Comment,
+          as: "comments",
+          attributes: []
         }
-      ]
+      ],
+      group: ["User.id", "ads.id"]
     });
     if (!user) {
       return res.status(404).json({ msg: "User Not Found" });

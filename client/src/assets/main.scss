@@ -12,10 +12,10 @@
 body {
   font-family: "Raleway", sans-serif;
 }
-h2{
+h2 {
   @include heading-h2;
 }
-h3{
+h3 {
   @include heading-h3;
 }
 .jumbotron {
@@ -79,7 +79,7 @@ section#header-homepage {
 }
 section#cta-registration {
   margin: 100px 0;
-  p{
+  p {
     font-size: 1.5rem;
   }
 }
@@ -92,31 +92,31 @@ section#ads {
 // Page Show Ad
 section#show-ad-information {
   margin-top: 150px;
-  h1{
+  h1 {
     color: $primaryColor;
   }
-  p{
+  p {
     color: $darkColor;
     font-style: italic;
   }
-  .price{
+  .price {
     font-size: 1.5rem;
   }
 }
 section#show-ad-description {
-  p{
+  p {
     color: $darkColor;
-    &.firstname-owner{
+    &.firstname-owner {
       color: $primaryColor;
       font-weight: bold;
     }
-    &.introduction-owner{
-      font-size: .9rem;
+    &.introduction-owner {
+      font-size: 0.9rem;
     }
   }
 }
 section#show-ad-comments {
-  p{
+  p {
     color: $darkColor;
     &.lastname-comment {
       color: $primaryColor;
@@ -125,7 +125,7 @@ section#show-ad-comments {
   }
   .date-comment {
     font-style: italic;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: $primaryColor;
   }
 }
@@ -138,8 +138,8 @@ section#form-registration {
   padding-top: 200px;
   padding-bottom: 150px;
   .bg-light {
-      max-width: 700px;
-      border-radius: 5px;
+    max-width: 700px;
+    border-radius: 5px;
   }
 }
 section#form-login {
@@ -155,27 +155,27 @@ section#form-login {
 }
 
 //page show user profile
-section#header-show-user-profile{
+section#header-show-user-profile {
   margin-top: 76px;
   background-color: $primaryColor;
-  p{
-    &.firstname{
+  p {
+    &.firstname {
       color: $whiteColor;
       font-weight: bold;
     }
-    &.date-member{
+    &.date-member {
       color: $whiteColor;
       font-style: italic;
     }
   }
 }
-section#details-show-user-profile{
-  .introduction{
+section#details-show-user-profile {
+  .introduction {
     color: $darkColor;
     font-size: 1.1rem;
     font-style: italic;
   }
-  .description{
+  .description {
     color: $darkColor;
     font-size: 1.1rem;
   }
@@ -183,4 +183,6 @@ section#details-show-user-profile{
 section#list-bookings-show-user-profile {
   margin-bottom: 150px;
 }
-
+section#owner-contact-me {
+  margin-bottom: 150px;
+}
