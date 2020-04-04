@@ -98,6 +98,10 @@ section#show-ad-information {
   p {
     color: $darkColor;
     font-style: italic;
+    &.rating-desc {
+      color: $primaryColor;
+      font-size: 0.9rem;
+    }
   }
   .price {
     font-size: 1.5rem;

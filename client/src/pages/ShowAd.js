@@ -160,11 +160,17 @@ const ShowAd = ({ match, history }) => {
                   numberOfStars={5}
                   rating={+ad.avgRatings}
                 />
+                <p className="rating-desc">
+                  (Note basée sur {commentsAd.length} commentaire(s))
+                </p>
                 <p className="my-3">{ad.introduction}</p>
                 <span className="badge badge-primary mb-3">{ad.location}</span>
                 <span className="d-block price">
                   {parseFloat(ad.price).toFixed(2)} €
                 </span>
+                <Link to="/" className="btn btn-danger mt-3">
+                  Réserver
+                </Link>
               </div>
             </div>
           )}
