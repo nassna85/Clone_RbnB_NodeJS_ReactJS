@@ -22,7 +22,8 @@ nav.mainNav {
       outline: none;
     }
   }
-  .nav-link, .dropdown-item {
+  .nav-link,
+  .dropdown-item {
     color: $dangerColor;
     margin: 0 0.3rem;
     -webkit-transition: all 0.3s ease-in-out;
@@ -35,6 +36,9 @@ nav.mainNav {
     }
   }
   .dropdown-item {
-    font-size: .9rem;
+    font-size: 0.9rem;
+  }
+  .dropdown-menu {
+    left: -50px;
   }
 }

@@ -84,6 +84,7 @@ const ShowProfileUser = ({ match, history }) => {
     */
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchCurrentUser(id);
     fetchAdsByUser(id);
     fetchBookingsByUser(id);
@@ -101,6 +102,7 @@ const ShowProfileUser = ({ match, history }) => {
         createdAt={user.createdAt}
         lastName={user.lastName}
         firstName={user.firstName}
+        ads={adsByUser}
       />
 
       <div className="divider-section"></div>

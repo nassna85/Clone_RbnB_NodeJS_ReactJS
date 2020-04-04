@@ -186,3 +186,12 @@ section#list-bookings-show-user-profile {
 section#owner-contact-me {
   margin-bottom: 150px;
 }
+
+//Page Edit profile
+section#form-edit-profile {
+  form {
+    max-width: 600px;
+    //margin: 0 auto;
+    margin-bottom: 150px;
+  }
+}

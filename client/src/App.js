@@ -20,6 +20,7 @@ import { ToastContainer } from "react-toastify";
 import ShowProfileUser from "./pages/ShowProfileUser";
 import AccessDenied from "./pages/AccessDenied";
 import ShowPublicProfileUser from "./pages/ShowPublicProfileUser";
+import AccountProfile from "./pages/AccountProfile";
 
 //Verify if authenticate every times application refresh
 AuthAPI.setup();
@@ -49,6 +50,7 @@ const App = () => {
               component={ShowPublicProfileUser}
             />
             <PrivateRoute path="/mon-profil/:id" component={ShowProfileUser} />
+            <PrivateRoute path="/mon-compte/:id" component={AccountProfile} />
             <Route path="/inscription" component={Registration} />
             <Route path="/connexion" component={Login} />
             <Route path="/annonces" component={Ads} />

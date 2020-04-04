@@ -11,7 +11,12 @@ function findForPublic(id) {
     .then(response => response.data);
 }
 
+function update(user, id) {
+  return axios.put(USER_URL + "/" + id, user).then(response => response.data);
+}
+
 export default {
   find,
-  findForPublic
+  findForPublic,
+  update
 };

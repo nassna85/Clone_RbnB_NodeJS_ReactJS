@@ -11,7 +11,8 @@ const Navigation = ({ history }) => {
   const [currentUser, setCurrentUser] = useState({
     id: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    avatar: ""
   });
 
   const handleLogout = () => {
@@ -24,8 +25,8 @@ const Navigation = ({ history }) => {
   const fetchInfo = () => {
     const token = window.localStorage.getItem("authToken");
     if (token) {
-      const { id, firstName, lastName } = jwtDecode(token);
-      setCurrentUser({ id, firstName, lastName });
+      const { id, firstName, lastName, avatar } = jwtDecode(token);
+      setCurrentUser({ id, firstName, lastName, avatar });
     }
   };
 
@@ -99,7 +100,11 @@ const Navigation = ({ history }) => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Avatar
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.firstName}
+                    className="img-fluid avatar avatar-mini"
+                  />
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link

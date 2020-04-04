@@ -82,13 +82,16 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res
         .status(400)
-        .json({ errors: [{ msg: "Email ou mot de passe incorrect !", param: "email" }] });
+        .json({
+          errors: [{ msg: "Email ou mot de passe incorrect !", param: "email" }]
+        });
     }
     //Validation passed
     const payload = {
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
+      avatar: user.avatar,
       isAdmin: user.isAdmin
     };
     generateToken(payload, (error, token) => {

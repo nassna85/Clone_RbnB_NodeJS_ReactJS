@@ -1,9 +1,20 @@
 import React from "react";
 import { formatDate } from "../../helpers/formatDate";
 
-const HeaderProfile = ({ avatar, firstName, lastName, createdAt, ads }) => {
+const HeaderProfile = ({
+  avatar,
+  firstName,
+  lastName,
+  createdAt,
+  ads,
+  background = ""
+}) => {
   return (
-    <section id="header-show-user-profile" className="jumbotron">
+    <section
+      id="header-show-user-profile"
+      className="jumbotron"
+      style={{ backgroundColor: background }}
+    >
       <div className="container text-center">
         <img
           src={avatar}
